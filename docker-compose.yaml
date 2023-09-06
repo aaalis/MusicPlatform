@@ -14,15 +14,16 @@ services:
     volumes:
       - music-postgres-data:/var/lib/postgresql/data
 
-
   music-laravel:
     container_name: music-laravel
     image: ${DOCKER_REGISTRY-}music-laravel
+    restart: unless-stopped
     build: .
     ports:
       - "8000:8000"
     env_file:
       - .env
+    command: php artisan migrate --seed
     depends_on:
       - music-postgres
 
