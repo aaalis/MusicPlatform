@@ -11,12 +11,6 @@ class MusicController extends Controller
     {
         $tracks = Track::all()->load('author', 'genre');
 
-//        $authors = [];
-//        foreach ($tracks as $track)
-//        {
-//            array_push($authors, $track->author);
-//        }
-
         return response()->json($tracks);
     }
 
