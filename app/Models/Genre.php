@@ -12,6 +12,8 @@ class Genre extends Model
 
     protected $fillable = ["genreName"];
 
+    protected $hidden = ['created_at', 'updated_at', "deleted_at"];
+
     public function tracks()
     {
         return $this->hasMany(Track::class);

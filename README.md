@@ -11,7 +11,13 @@ REST API для работы с музыкой.
 
 ## Тестирование
 
-:heavy_check_mark: localhost:8000/api/doc
+- :heavy_check_mark: Swaqger - localhost:8000/api/doc
+- :ballot_box_with_check: Adminer - localhost:8088
+  - PostgreSQL
+  - Сервер - music-postgres
+  - Имя пользователя - postgres
+  - Пароль - postgres
+  - База данных - music-db
 
 ## Стек технологий
 

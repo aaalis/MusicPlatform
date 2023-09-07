@@ -1,0 +1,251 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My documentation API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/": {},
+        "/api/tracks": {
+            "get": {
+                "tags": [
+                    "Endpoints"
+                ],
+                "summary": "Получение всех треков со связанными данными",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Endpoints"
+                ],
+                "summary": "Создание трека",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "trackName": {
+                                                "type": "string",
+                                                "example": "some track"
+                                            },
+                                            "author_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "genre_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "trackName": {
+                                            "type": "string",
+                                            "example": "some track"
+                                        },
+                                        "author_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "genre_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tracks/{track}": {
+            "get": {
+                "tags": [
+                    "Endpoints"
+                ],
+                "summary": "Получение трека",
+                "parameters": [
+                    {
+                        "name": "track",
+                        "in": "path",
+                        "description": "ID трека",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "trackName": {
+                                            "type": "string",
+                                            "example": "some track"
+                                        },
+                                        "author_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "genre_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Endpoints"
+                ],
+                "summary": "Обновление трека",
+                "parameters": [
+                    {
+                        "name": "track",
+                        "in": "path",
+                        "description": "ID трека",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "trackName": {
+                                                "type": "string",
+                                                "example": "some track"
+                                            },
+                                            "author_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "genre_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "trackName": {
+                                            "type": "string",
+                                            "example": "some track"
+                                        },
+                                        "author_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "genre_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Endpoints"
+                ],
+                "summary": "Удаление трека",
+                "parameters": [
+                    {
+                        "name": "track",
+                        "in": "path",
+                        "description": "ID трека",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "done"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

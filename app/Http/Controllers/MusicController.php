@@ -3,29 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Track;
-use http\Env\Request;
+use Illuminate\Http\Request;
 
 class MusicController extends Controller
 {
-    /**
-     * @OA\Put(
-     *     path="/users/{id}",
-     *     summary="Updates a user",
-     *     @OA\Parameter(
-     *         description="Parameter with mutliple examples",
-     *         in="path",
-     *         name="id",
-     *         required=true,
-     *         @OA\Schema(type="string"),
-     *         @OA\Examples(example="int", value="1", summary="An int value."),
-     *         @OA\Examples(example="uuid", value="0006faf6-7a61-426c-9034-579f2cfcfa83", summary="An UUID value."),
-     *     ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="OK"
-     *     )
-     * )
-     */
     public function getTracks()
     {
         $tracks = Track::all()->load('author', 'genre');
@@ -42,8 +23,9 @@ class MusicController extends Controller
     public function createTrack(Request $request)
     {
         $validatedData = $request->validate([
-            'author' => 'required|string',
-            'name' => 'required|string'
+            'trackName' => 'required|',
+            'author_id' => 'required|exists:authors,id',
+            'genre_id' => 'required|exists:genres,id'
         ]);
 
         $track = Track::create($validatedData);
@@ -59,8 +41,9 @@ class MusicController extends Controller
     public function updateTrack(Request $request, Track $track)
     {
         $validatedData = $request->validate([
-            'author' => 'required|string',
-            'name' => 'required|string'
+            'trackName' => 'required|',
+            'author_id' => 'required|exists:authors,id',
+            'genre_id' => 'required|exists:genres,id'
         ]);
 
         $track->update($validatedData);
@@ -72,6 +55,6 @@ class MusicController extends Controller
     {
         $track->delete();
 
-        return response()->json(null,204);
+        return response()->json(['message' => 'done'],204);
     }
 }

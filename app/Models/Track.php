@@ -12,6 +12,8 @@ class Track extends Model
 
     protected $fillable = ['trackName','author_id','genre_id'];
 
+    protected $hidden = ['created_at', 'updated_at', "deleted_at"];
+
     public function author()
     {
         return $this->belongsTo(Author::class, 'author_id', 'id');
