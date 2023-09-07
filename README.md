@@ -9,6 +9,10 @@ REST API для работы с музыкой.
 2. cd MusicPlatform
 3. docker-compose up
 
+## Тестирование
+
+:heavy_check_mark: localhost:8000/api/doc
+
 ## Стек технологий
 
 - PHP 8.2

@@ -12,8 +12,8 @@ class Author extends Model
 
     protected $fillable = ["name"];
 
-//    public function tracks()
-//    {
-//        return $this->hasMany(Track::class);
-//    }
+    public function tracks()
+    {
+        return $this->hasMany(Track::class);
+    }
 }

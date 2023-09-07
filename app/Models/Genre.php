@@ -11,4 +11,9 @@ class Genre extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = ["genreName"];
+
+    public function tracks()
+    {
+        return $this->hasMany(Track::class);
+    }
 }
