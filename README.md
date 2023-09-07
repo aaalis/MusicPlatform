@@ -5,9 +5,9 @@ REST API для работы с музыкой.
 
 ## Для запуска необходимо
 
-- git clone {}
-- cd {}
-- фы
+- git clone https://github.com/aaalis/MusicPlatform
+- cd MusicPlatform
+- docker-compose up
 
 ## Стек технологий
 
