@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('tracks', function (Blueprint $table) {
+            $table->id();
+            $table->string('trackName');
+
+            $table->unsignedBigInteger('author_id');
+            $table->index('author_id', 'track_author_idx');
+            $table->foreign('author_id', 'track_author_fk')->on('authors')->references('id');
+
+            $table->unsignedBigInteger('genre_id');
+            $table->index('genre_id', 'track_genre_idx');
+            $table->foreign('genre_id', 'track_genre_fk')->on('genres')->references('id');
+
+            $table->timestamps();
+            $table->softDeletes();
+
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('track');
+    }
+};
